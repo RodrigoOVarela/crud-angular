@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { MatDialog } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { ErrorDialogComponent } from 'src/app/shared/components/error-dialog/error-dialog.component';
 
 import { Character } from '../model/character';
-import { Course } from '../model/course';
 import { CoursesService } from './../services/courses.service';
-import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-courses',
@@ -21,7 +21,9 @@ export class CoursesComponent implements OnInit {
 
   constructor(
     private coursesService: CoursesService,
-    private snackBar: MatSnackBar) {
+    private snackBar: MatSnackBar,
+    private dialog: MatDialog
+  ) {
     // this.characters = this.coursesService.getMarvelCharactersTap();
   }
 
@@ -33,12 +35,23 @@ export class CoursesComponent implements OnInit {
         console.log("getMarvelCharacters without tap", response.data.results);
       }, err => {
         this.loadedGrid = !this.loadedGrid;
-        this.snackBar.open("Ocorreu um erro no servidor, tente novamente mais tarde", undefined, {
-          duration: 4000,
-          horizontalPosition: 'right',
-          verticalPosition: 'bottom',
-        });
+        // this.openSnackBar();
+        this.openDialog('Ocorreu um erro no servidor, tente novamente mais tarde');
         console.log(err);
       });
+  }
+
+  private openSnackBar() {
+    this.snackBar.open("Ocorreu um erro no servidor, tente novamente mais tarde", undefined, {
+      duration: 4000,
+      horizontalPosition: 'right',
+      verticalPosition: 'bottom',
+    });
+  }
+
+  private openDialog(errorMessage: string) {
+    this.dialog.open(ErrorDialogComponent, {
+      data: errorMessage,
+    });
   }
 }

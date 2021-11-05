@@ -9,7 +9,7 @@ import { Course } from './../model/course';
   providedIn: 'root'
 })
 export class CoursesService {
-  private readonly apiUrl = 'https://gateway.marvel.com:443/v1/public/characters?limit=100&ts=1&apikey=55788f172342a9d35da3427c80eea162&hash=cff54bba4a9ff436b7541cbb693c7eca';
+  private readonly apiUrl = 'https://ggateway.marvel.com:443/v1/public/characters?limit=100&ts=1&apikey=55788f172342a9d35da3427c80eea162&hash=cff54bba4a9ff436b7541cbb693c7eca';
 
   constructor(private httpClient: HttpClient) { }
 
