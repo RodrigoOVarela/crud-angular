@@ -13,7 +13,9 @@
 
       <ng-container matColumnDef="description">
         <th mat-header-cell *matHeaderCellDef> Descrição </th>
-        <td mat-cell *matCellDef="let character"> {{character.description}} </td>
+        <td mat-cell *matCellDef="let character"> {{character.description}}
+          <mat-icon aria-hidden="false" aria-label="Example home icon">{{character.name | category}}</mat-icon>
+        </td>
       </ng-container>
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
