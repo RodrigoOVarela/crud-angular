@@ -6,6 +6,10 @@ const routes: Routes = [
   {
     path: 'courses',
     loadChildren: () => import('./courses/courses.module').then(m => m.CoursesModule)
+  },
+  {
+    path: 'cron',
+    loadChildren: () => import('./cron/cron.module').then(m => m.CronModule)
   }
 ];
 
