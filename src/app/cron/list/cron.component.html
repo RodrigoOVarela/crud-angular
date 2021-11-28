@@ -1,1 +1,20 @@
-<p>cron works!</p>
+<section class="mat-typography demo-container">
+  <h1>Angular Cron Expression Editor</h1>
+
+  <mat-card class="demo-card">
+    <mat-card-content class="demo-card-content">
+      <form>
+        <cron-editor #cronEditorDemo [formControl]="cronForm" [options]="cronOptions">Expressão aqui...</cron-editor>
+      </form>
+    </mat-card-content>
+
+    <mat-card-footer class="demo-card-footer">
+      <div>
+        <h3>
+          <b>Expressão cron: {{cronForm.value}}</b>
+        </h3>
+      </div>
+    </mat-card-footer>
+
+  </mat-card>
+</section>
